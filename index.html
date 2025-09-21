@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ayush!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+        
+        .buttons {
+            margin: 40px 0;
+            position: relative;
+            height: 120px;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-yes {
+            background: linear-gradient(to right, #4ecdc4, #42b883);
+            color: white;
+        }
+        
+        .btn-yes:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-no {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            position: absolute;
+            left: 55%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .btn-no.moving {
+            transition: all 0.5s ease;
+        }
+        
+        .graphic-container {
+            margin: 25px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        }
+        
+        .graphic {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .birthday-message {
+            display: none;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: white;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+        
+        .birthday-name {
+            font-size: 2.5rem;
+            color: #ffeb3b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 10px 0;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            animation: confettiFall 5s linear infinite;
+        }
+        
+        .heart {
+            color: #ff6b6b;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .question {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .birthday-name {
+                font-size: 2rem;
+            }
+            
+            .graphic-container {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Best Friends Forever <span class="heart">❤️</span></h1>
+        </div>
+        
+        <div class="question" id="question">Will you be my best friend forever?</div>
+        
+        <div class="graphic-container">
+            <div class="graphic" id="graphic">
+                <svg width="180" height="180" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21C12 21 3 14 3 8C3 5.5 4.5 4 7 4C9 4 10 5 12 7C14 5 15 4 17 4C19.5 4 21 5.5 21 8C21 14 12 21 12 21Z" fill="#ff6b6b" stroke="#2c3e50" stroke-width="1.5"/>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="buttons" id="buttonsArea">
+            <button class="btn btn-yes" id="yesBtn">Yes</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+        
+        <div class="birthday-message" id="birthdayMessage">
+            <h2>🎉 Happy Birthday Ayush! 🎂</h2>
+            <div class="birthday-name">AYUSH</div>
+            <p>On your special day, I want you to know how much your friendship means to me! 🥳</p>
+            <p>You're not just my best friend, you're family! Thank you for all the laughter, support, and amazing memories.</p>
+            <p>May your day be filled with joy, laughter, and all the things you love the most! 🎊</p>
+            <p>Here's to many more years of friendship and adventures together! 🥂</p>
+        </div>
+        
+        <div class="footer">
+            <p>Made with <span class="heart">❤️</span> for your special day! | © 2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Audio Context for sound effects
+        let audioContext;
+        
+        // Initialize audio
+        function initAudio() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        
+        // Play a tone
+        function playTone(frequency, duration, type = 'sine') {
+            if (!audioContext) initAudio();
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = type;
+            oscillator.frequency.value = frequency;
+            
+            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration / 1000);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + duration / 1000);
+        }
+        
+        // Play success sound
+        function playSuccessSound() {
+            playTone(523.25, 200); // C5
+            setTimeout(() => playTone(659.25, 300), 200); // E5
+            setTimeout(() => playTone(783.99, 500), 500); // G5
+        }
+        
+        // Play no sound
+        function playNoSound() {
+            playTone(349.23, 200); // F4
+            setTimeout(() => playTone(293.66, 300), 200); // D4
+        }
+        
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#ffbe0b', '#fb5607', '#8338ec'];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.width = Math.random() * 15 + 5 + 'px';
+                confetti.style.height = Math.random() * 15 + 5 + 'px';
+                container.appendChild(confetti);
+            }
+        }
+        
+        // DOM Elements
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const question = document.getElementById('question');
+        const buttonsArea = document.getElementById('buttonsArea');
+        const birthdayMessage = document.getElementById('birthdayMessage');
+        const graphic = document.getElementById('graphic');
+        
+        let attempts = 0;
+        
+        // No button movement
+        noBtn.addEventListener('mouseover', function() {
+            attempts++;
+            
+            // Play sound
+            playNoSound();
+            
+            // Add moving class for smooth transition
+            noBtn.classList.add('moving');
+            
+            // Move the button to a random position
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            
+            // Remove the moving class after transition completes
+            setTimeout(() => {
+                noBtn.classList.remove('moving');
+            }, 500);
+        });
+        
+        // Yes button click
+        yesBtn.addEventListener('click', function() {
+            // Play success sound
+            playSuccessSound();
+            
+            // Create confetti
+            createConfetti();
+            
+            // Change the content
+            question.textContent = "Yay! We'll be best friends forever!";
+            
+            // Change the graphic to a celebration image
+            graphic.innerHTML = `
+                <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 3C17 3 15 1 12 1C9 1 7 3 7 3M7 3C5 5 5 7 5 10C5 15 7 17 12 17C17 17 19 15 19 10C19 7 19 5 17 3Z" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 17V21" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M8 21H16" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7 7H7.01" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M17 7H17.01" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7 11H7.01" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M17 11H17.01" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            `;
+            
+            // Show birthday message
+            birthdayMessage.style.display = 'block';
+            
+            // Hide buttons after a short delay
+            setTimeout(() => {
+                buttonsArea.style.display = 'none';
+            }, 1000);
+        });
+        
+        // Touch event for mobile devices
+        noBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            attempts++;
+            
+            // Play sound
+            playNoSound();
+            
+            // Add moving class for smooth transition
+            noBtn.classList.add('moving');
+            
+            // Move the button to a random position
+            const x = Math.random() * (window.innerWidth - 200);
+            const y = Math.random() * (window.innerHeight - 100);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            
+            // Remove the moving class after transition completes
+            setTimeout(() => {
+                noBtn.classList.remove('moving');
+            }, 500);
+        });
+        
+        // Initialize audio on first user interaction
+        document.addEventListener('click', function() {
+            if (!audioContext) {
+                initAudio();
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
