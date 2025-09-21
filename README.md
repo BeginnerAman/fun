@@ -1,0 +1,1 @@
+I've created a complete, self-contained page that asks "Will you be my best friend forever?" and then celebrates Ayush's birthday when the user clicks "Yes". All graphics are embedded in the code so no external resources are needed
